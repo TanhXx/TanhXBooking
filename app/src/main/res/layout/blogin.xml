@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="0dp"
+    android:id="@+id/btss"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    tools:context=".Loginb">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="match_parent"
+            android:layout_marginTop="121dp"
+            android:background="@drawable/custom_login"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="57dp"
+                android:layout_marginRight="125dp"
+                android:fontFamily="@font/gilroy_medium"
+
+                android:gravity="center"
+                android:text="Đăng nhập"
+                android:textSize="32dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:textColorHint="#B0B0B0"
+                android:id="@+id/edt_tk"
+                android:layout_width="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+
+
+                android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/custom_edtlog"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:hint="Tài khoản"
+                    android:paddingStart="30dp"
+                    android:id="@+id/tk"
+                    android:layout_height="match_parent"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+         <!--    <EditText
+                 android:clickable="true"
+                 android:focusable="true"
+                 android:fontFamily="@font/gilroy_medium"
+                 android:id="@+id/tk"
+                 style="@style/NoUnderlineEditText"
+                 android:layout_width="match_parent"
+                 android:layout_height="69dp"
+                 android:layout_alignParentLeft="true"
+                 android:layout_alignParentRight="true"
+                 android:layout_marginLeft="28dp"
+                 android:layout_marginTop="20dp"
+                 android:layout_marginRight="40dp"
+                 android:background="@drawable/custom_edtlog"
+                 android:hint="Tài khoản"
+                 android:paddingStart="30dp"
+                 android:textColorHint="#B0B0B0" />
+-->
+            <!--<EditText
+                android:fontFamily="@font/gilroy_medium"
+                android:inputType="textPassword"
+                android:id="@+id/mk"
+                style="@style/NoUnderlineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/custom_edtlog"
+                android:hint="Password"
+                android:paddingStart="30dp"
+                android:textColorHint="#B0B0B0" />-->
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edt_mk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:textColorHint="#B0B0B0"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:endIconDrawable="@drawable/eye"
+                app:endIconMode="custom"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/checkfaile">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_edtlog"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:hint="Mật khẩu"
+                    android:inputType="textPassword"
+                    android:paddingStart="30dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:elevation="10dp"
+                android:id="@+id/login"
+                android:stateListAnimator="@null"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/custom_btnlogin"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:text="Đăng nhập"
+                android:textSize="23dp"
+                app:backgroundTint="@null" />
+
+            <TextView
+                android:id="@+id/singup"
+                android:fontFamily="@font/avenir1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/idonthavelogin"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/forgot"
+                android:textStyle="bold"
+                android:fontFamily="@font/avenir1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:text="Quên mật khẩu ?"
+                android:textColor="#2F2F2F"
+                android:textSize="17dp" />
+
+            <TextView
+                android:textColor="#B0B0B0"
+                android:fontFamily="@font/avenir1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="80dp"
+                android:text="@string/youcan"
+                android:textSize="17dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:textStyle="bold"
+                    android:fontFamily="@font/avenir1"
+                    android:id="@+id/loginfb"
+                    android:layout_width="165dp"
+                    android:layout_height="66dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_facebook"
+                    android:text="Facebook"
+                    android:textSize="18dp"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:fontFamily="@font/avenir1"
+                    android:textStyle="bold"
+                    android:id="@+id/logingg"
+                    android:layout_width="165dp"
+                    android:layout_height="66dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_google"
+                    android:text="Google"
+                    android:textSize="18dp"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:src="@drawable/llogin"/>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

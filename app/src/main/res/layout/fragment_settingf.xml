@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C4C4C4"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Settingf">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="match_parent"
+            android:layout_marginTop="121dp"
+            android:background="@drawable/custom_login"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+
+                android:layout_marginTop="57dp"
+
+                android:fontFamily="@font/gilroy_medium"
+
+                android:gravity="center"
+                android:text="Bui Tuan Anh"
+                android:textSize="32dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="038 386 5954"
+                android:textSize="16dp"
+                android:layout_gravity="center"
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="10dp"/>
+            <TextView
+
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="My Profile"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="Chance Password"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="Payment Settings"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="My Order"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="Food Delivery"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="#B0B0B0"
+                android:textSize="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_width="match_parent"
+                android:drawableRight="@drawable/nextseting"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="Filter Food"/>
+
+
+
+
+
+
+            <Button
+                android:id="@+id/btnlogout"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/custom_btnlogin"
+                android:elevation="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:stateListAnimator="@null"
+                android:text="Log Out"
+                android:textSize="23dp"
+                app:backgroundTint="@null" />
+
+
+
+
+        </LinearLayout>
+
+
+
+
+        <ImageView
+            android:scaleType="centerInside"
+            android:layout_width="112dp"
+            android:layout_height="112dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="65dp"
+            android:src="@drawable/avt"/>
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_marginTop="137dp"
+           android:scaleType="centerInside"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_height="26dp"
+            android:src="@drawable/exit"/>
+    </RelativeLayout>
+
+
+</ScrollView>

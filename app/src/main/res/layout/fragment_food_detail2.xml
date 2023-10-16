@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".FoodDetail2">
+
+
+   <RelativeLayout
+       android:background="#1B1A1A"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1">
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/backwhite"
+           android:id="@+id/back"
+           android:layout_marginTop="25dp"
+           android:layout_marginLeft="40dp"/>
+
+       <ImageView
+           android:id="@+id/tym"
+           android:layout_width="wrap_content"
+           android:layout_alignParentTop="true"
+           android:layout_marginRight="25dp"
+           android:layout_marginTop="20dp"
+           android:layout_alignParentRight="true"
+           android:layout_height="wrap_content"
+           android:src="@drawable/loved"/>
+
+
+       <TextView
+           android:textColor="@color/white"
+           android:id="@+id/tenmon"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/tym"
+
+           android:layout_marginLeft="40dp"
+           android:layout_marginTop="40dp"
+           android:fontFamily="@font/gilroy_medium"
+           android:text="Chicken"
+           android:textSize="36dp" />
+       <TextView
+           android:textColor="@color/white"
+           android:layout_marginTop="10dp"
+           android:textSize="20dp"
+           android:layout_marginLeft="40dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text=" 78 Caloris"
+           android:drawableLeft="@drawable/cal"
+           android:layout_below="@+id/tenmon"
+           android:id="@+id/calo"/>
+       <TextView
+           android:textColor="@color/white"
+           android:layout_marginTop="10dp"
+           android:layout_marginLeft="40dp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/calo"
+           android:text="$7,90"
+           android:textSize="26dp"
+           android:fontFamily="@font/gilroy_medium"/>
+
+   </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginLeft="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:textColor="@color/black"
+        android:layout_weight="1">
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:id="@+id/mta"
+            android:fontFamily="@font/gilroy_medium"
+            android:layout_height="wrap_content"
+            android:text="Mô tả"/>
+        <TextView
+            android:layout_marginRight="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#BFBBBB"
+            android:id="@+id/mtct"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:text="It is a long established fact that a reader will be distracted by the readable content of a page "
+            android:layout_below="@+id/mta"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textsoluong"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/mtct"
+            android:text="Số lượng"
+            android:fontFamily="@font/gilroy_medium"/>
+       <LinearLayout
+           android:layout_marginTop="20dp"
+           android:id="@+id/quanti"
+           android:layout_width="wrap_content"
+           android:layout_below="@+id/textsoluong"
+           android:orientation="horizontal"
+           android:layout_height="wrap_content">
+           <TextView
+               android:layout_width="70dp"
+               app:backgroundTint = "@null"
+               android:text="-"
+               android:id="@+id/tru"
+               android:textColor="#959595"
+               android:textSize="35dp"
+               android:gravity="center"
+               android:background="@drawable/quantity1"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/textsoluong"/>
+
+           <TextView
+               android:layout_width="70dp"
+               app:backgroundTint = "@null"
+               android:text="+"
+               android:id="@id/cong"
+               android:textColor="#959595"
+               android:textSize="35dp"
+               android:gravity="center"
+               android:background="@drawable/quantity2"
+               android:layout_height="wrap_content"
+               android:layout_below="@+id/textsoluong"/>
+
+           <TextView
+               android:textColor="@color/black"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:fontFamily="@font/avenir1"
+               android:text="1"
+               android:id="@+id/soluong"
+               android:textSize="20dp"
+               android:layout_marginLeft="10dp"
+               android:layout_gravity="center"/>
+       </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/quanti"
+            android:text="Thêm topping"
+            android:id="@+id/ttp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/avenir1"
+            android:textSize="18sp"
+           />
+<LinearLayout
+    android:layout_marginTop="30dp"
+    android:layout_marginRight="40dp"
+        android:id="@+id/ln"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_below="@+id/ttp"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+<Button
+    android:id="@+id/hattieu"
+    android:backgroundTint="#EDE5E5"
+    android:layout_width="wrap_content"
+    android:text="Hạt Tiêu"
+    android:textColor="@color/black"
+    android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/cachua"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:backgroundTint="#EDE5E5"
+        android:layout_width="wrap_content"
+        android:text="Cà chua"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/khoaitay"
+        android:textColor="@color/black"
+        android:backgroundTint="#EDE5E5"
+        android:layout_width="wrap_content"
+        android:text="Khoai tây"
+
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            android:layout_above="@+id/ln"
+            android:id="@+id/giohang"
+            android:src="@drawable/shoping"
+           />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
