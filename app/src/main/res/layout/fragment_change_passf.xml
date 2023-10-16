@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C4C4C4"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChangePassf">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="match_parent"
+            android:layout_marginTop="121dp"
+            android:background="@drawable/custom_login"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="57dp"
+                android:layout_marginRight="125dp"
+                android:fontFamily="@font/gilroy_medium"
+
+                android:gravity="center"
+                android:text="Forgot Password"
+                android:textSize="32dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter old password"
+                android:textSize="14dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="#B0B0B0"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:fontFamily="@font/gilroy_medium"
+                android:id="@+id/oldpass"
+                android:inputType="textPassword"
+                style="@style/NoUnderlineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/custom_edtlog"
+
+                android:paddingStart="30dp"
+                android:textColorHint="#B0B0B0" />
+
+
+
+            <EditText
+                android:fontFamily="@font/gilroy_medium"
+                android:id="@+id/newpass"
+                android:hint="Enter New PassWord"
+                android:inputType="textPassword"
+                style="@style/NoUnderlineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/custom_edtlog"
+
+                android:paddingStart="30dp"
+                android:textColorHint="#B0B0B0" />
+            <EditText
+                android:fontFamily="@font/gilroy_medium"
+                android:id="@+id/cfnewpass"
+                android:hint="Enter a new password"
+                android:inputType="textPassword"
+                style="@style/NoUnderlineEditText"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/custom_edtlog"
+
+                android:paddingStart="30dp"
+                android:textColorHint="#B0B0B0" />
+            <Button
+                android:id="@+id/btnsave"
+                android:layout_width="match_parent"
+                android:layout_height="73dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/custom_btnlogin"
+                android:elevation="20dp"
+                android:fontFamily="@font/gilroy_medium"
+                android:gravity="center"
+                android:stateListAnimator="@null"
+                android:text="Save"
+                android:textSize="23dp"
+                app:backgroundTint="@null" />
+
+
+
+
+        </LinearLayout>
+
+
+
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:src="@drawable/forgot"/>
+    </RelativeLayout>
+
+</ScrollView>
