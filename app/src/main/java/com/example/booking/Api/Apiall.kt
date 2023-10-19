@@ -10,13 +10,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.POST
 
-interface Apilogin {
+interface Apiall {
     companion object{
         var retrofit = Retrofit.Builder()
             .baseUrl("https://dd5d-2405-4803-fe74-70c0-b4eb-868c-1595-654a.ngrok-free.app/api/")
             .addConverterFactory(GsonConverterFactory.create()).build()
 
-        var apilogin = retrofit.create(Apilogin::class.java)
+        var apiall = retrofit.create(Apiall::class.java)
 
     }
     @POST("login")
