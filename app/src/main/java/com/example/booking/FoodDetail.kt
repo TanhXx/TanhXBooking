@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso
 class FoodDetail : Fragment() {
    var Size : String? = null
     var count = 1
+    var img : String? =null
     var thanhtien = 0
    lateinit var binding : FragmentFoodDetailBinding
     override fun onCreateView(
@@ -45,32 +46,27 @@ class FoodDetail : Fragment() {
             }else{
                 binding.soluong.text = count.toString()
             }
+        }
 
+        binding.back.setOnClickListener {
+            parentFragmentManager.beginTransaction().replace(R.id.maincontainer,Homef()).commit()
         }
 
         binding.giohang.setOnClickListener {
-            var home = Homef()
-            var bundle = Bundle()
+            val bundle = Bundle()
             bundle.putString("soluong", binding.soluong.text.toString())
             bundle.putString("size", Size)
+            bundle.putString("tenmon", binding.tenmon.text.toString())
             bundle.putString("gia", binding.gia.text.toString())
+            bundle.putString("img", img)
 
-            var gia = binding.gia.text.toString().replace("$","")
+            val cartFragment = Cart()
+            cartFragment.arguments = bundle
 
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.maincontainer, cartFragment,"CartFragmentTag")
+                .commit()
 
-            if (Size == "S"){
-                thanhtien = (binding.soluong.text.toString().toIntOrNull()!! * gia.toIntOrNull()!!)
-            }else if(Size == "M"){
-                thanhtien = (binding.soluong.text.toString().toIntOrNull()!! * gia.toIntOrNull()!!)
-                + (gia.toIntOrNull()!! * 0.2)
-            }
-            else{
-                thanhtien = (binding.soluong.text.toString().toIntOrNull()!! * gia.toIntOrNull()!!)
-                + (gia.toIntOrNull()!! * 0.3)
-            }
-            bundle.putString("thanhtien", thanhtien.toString())
-            home.arguments = bundle
-            parentFragmentManager.beginTransaction().replace(R.id.maincontainer,home).commit()
         }
 
 
@@ -100,7 +96,7 @@ class FoodDetail : Fragment() {
         var tenmon = arguments?.getString("tenmon")
         var calo = arguments?.getString("calo")
         var tym = arguments?.getString("tym").toBoolean()
-        var img = arguments?.getString("img")
+        img = arguments?.getString("img")
 
         binding.tenmon.text = tenmon
         binding.calo.text = "${calo} Calories"

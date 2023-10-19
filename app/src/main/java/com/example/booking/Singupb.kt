@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.booking.Api.Apilogin
+import com.example.booking.Api.Apiall
 import com.example.booking.Model.Register
 import com.example.booking.Model.Registernew
 import com.example.booking.databinding.BsingupBinding
@@ -45,7 +45,7 @@ class Singupb : BottomSheetDialogFragment() {
             var mk = binding.mk.text.toString()
 
             var regis = Register(email, mk, sdt, tk)
-            Apilogin.apilogin.Register(regis).enqueue(object : Callback<Registernew> {
+            Apiall.apiall.Register(regis).enqueue(object : Callback<Registernew> {
                 override fun onResponse(call: Call<Registernew>, response: Response<Registernew>) {
                     if (response.isSuccessful){
                         Toast.makeText(requireContext(), "Đăng kí thành công", Toast.LENGTH_SHORT).show()

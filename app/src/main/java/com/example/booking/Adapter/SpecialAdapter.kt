@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booking.FoodDetail
-import com.example.booking.Model.FakeData
 import com.example.booking.Model.getAll
 import com.example.booking.R
 import com.squareup.picasso.Picasso
@@ -59,15 +58,15 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
             }
         }*/
 
-        holder.calo.text = "${current.calories.toString()} Calories"
+        holder.calo.text = "${current.calories} Calories"
         holder.tenmon.text = current.name
         holder.giatien.text ="$${current.price.toString()}"
         Picasso.get().load(current.image_url).into(holder.img)
 
         holder.info.setOnClickListener {
             val bundle = Bundle()
-            bundle.putString("calo",current.category.toString())
-            bundle.putString("tenmon",current.name.toString())
+            bundle.putString("calo", current.calories.toString())
+            bundle.putString("tenmon",current.name)
             bundle.putString("giatien", current.price.toString())
             bundle.putString("img", current.image_url)
 

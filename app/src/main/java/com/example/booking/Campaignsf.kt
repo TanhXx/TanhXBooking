@@ -17,10 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booking.Adapter.getAllAdapter
-import com.example.booking.Api.Apilogin
-import com.example.booking.Api.apiGiamGia
-import com.example.booking.Model.FakeData
-import com.example.booking.Model.Listitem
+import com.example.booking.Api.Apiall
 import com.example.booking.Model.Listproduct
 import com.example.booking.Model.Singleton
 import com.example.booking.Model.getAll
@@ -62,11 +59,11 @@ class Campaignsf : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val currentY = recyclerView.computeVerticalScrollOffset().toFloat()
-                Log.d(TAG, "onScrolled: ${currentY}-")
+                Log.d(TAG, "onScrolled: ${currentY}-${lastY}")
                 val delta = currentY - lastY
                 val frag1 = requireActivity().supportFragmentManager.findFragmentByTag("f1") as Homef
                 if (delta > 0 && checknavi) {
-                 /*   binding.navis.animate().translationY(binding.navis.height.toFloat())*/
+
                     frag1.showhidenavi(checknavi)
                     checknavi = false
                 } else if (delta < 0 && !checknavi) {
@@ -91,7 +88,7 @@ class Campaignsf : Fragment() {
     }
 
     private fun getall(beartoken : String){
-        Apilogin.apilogin.getProducts(beartoken).enqueue(object : Callback<Listproduct>{
+        Apiall.apiall.getProducts(beartoken).enqueue(object : Callback<Listproduct>{
             @SuppressLint("SuspiciousIndentation")
             override fun onResponse(call: Call<Listproduct>, response: Response<Listproduct>) {
                 if(response.isSuccessful){

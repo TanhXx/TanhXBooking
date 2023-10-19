@@ -11,10 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import com.example.booking.Api.Apilogin
-import com.example.booking.Model.Listproduct
+import com.example.booking.Api.Apiall
 import com.example.booking.Model.Loginnew
-import com.example.booking.Model.Singleton
 import com.example.booking.Model.TkMK
 import com.example.booking.databinding.BloginBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -53,7 +51,7 @@ class Loginb : BottomSheetDialogFragment() {
 
     private fun callapi() {
           val user = TkMK( binding.mk.text.toString(),binding.tk.text.toString())
-          Apilogin.apilogin.Login(user).enqueue(object : Callback<Loginnew>{
+          Apiall.apiall.Login(user).enqueue(object : Callback<Loginnew>{
               override fun onResponse(call: Call<Loginnew>, response: Response<Loginnew>) {
                   if (response.isSuccessful){
                     val login = response.body()
@@ -87,22 +85,6 @@ class Loginb : BottomSheetDialogFragment() {
 
           })
       }
-/*      private fun getall(beartoken : String){
-        Apilogin.apilogin.getProducts(beartoken).enqueue(object : Callback<Listproduct>{
-            @SuppressLint("SuspiciousIndentation")
-            override fun onResponse(call: Call<Listproduct>, response: Response<Listproduct>) {
-                if(response.isSuccessful){
-                   var mlist = response.body()
-                    var list = mlist!!.data.products
-                        Singleton.addItems(list)
-                }
-            }
-
-            override fun onFailure(call: Call<Listproduct>, t: Throwable) {
-                Log.d("getall", "onFailure: ")
-            }
-        })
-    }*/
 
     @SuppressLint("ResourceAsColor")
 

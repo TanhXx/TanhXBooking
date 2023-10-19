@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booking.Adapter.SpecialAdapter
-import com.example.booking.Model.FakeData
 import com.example.booking.Model.Singleton
 import com.example.booking.Model.getAll
 import com.example.booking.databinding.FragmentSpecialBinding
