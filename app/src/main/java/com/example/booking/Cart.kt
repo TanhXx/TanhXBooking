@@ -2,7 +2,6 @@ package com.example.booking
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +16,9 @@ import com.example.booking.databinding.FragmentCartBinding
 
 class Cart : Fragment() {
     lateinit var binding: FragmentCartBinding
-    var TAG = "cart"
+    var ds : ArrayList<Giohang> = ArrayList()
+    var sum = 0
     private lateinit var cartViewModel: CartViewModel
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
@@ -31,30 +30,28 @@ class Cart : Fragment() {
         binding = FragmentCartBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rcv.adapter = GiohangAdapter(requireContext(), cartViewModel.cartItems)
+        binding.rcv.adapter = GiohangAdapter(this, cartViewModel.cartItems,cartViewModel)
         binding.rcv.layoutManager = LinearLayoutManager(requireContext())
-
-        val tenmon = arguments?.getString("tenmon")
-        val soluong = arguments?.getString("soluong")
-        val gia = arguments?.getString("gia")!!.replace("$", "")
-        val img = arguments?.getString("img")
-
-        Log.d(TAG, "onViewCreated: $tenmon - $soluong - $gia - ${img}")
-
-
-        val gioHangItem = Giohang("${tenmon}", gia!!.toIntOrNull()!!, soluong!!.toIntOrNull()!!, "${img}")
-        cartViewModel.addCartItem(gioHangItem)
-        cartViewModel.removeDuplicateTenmon()
-        binding.rcv.adapter?.notifyDataSetChanged()
-
+        binding.tv3.text = Campaignsf.address
+        for (item in cartViewModel.cartItems){
+            ds.add(item)
+        }
+        updateTotalPrice()
+        binding.tongtien.text = sum.toString()
 
         binding.back.setOnClickListener {
             parentFragmentManager.beginTransaction().replace(R.id.maincontainer,Homef()).commit()
         }
+    }
+    fun updateTotalPrice() {
+        sum = 0
+        for (item in cartViewModel.cartItems) {
+            sum += item.tongtien
+        }
+        binding.tongtien.text = sum.toString()
     }
 }

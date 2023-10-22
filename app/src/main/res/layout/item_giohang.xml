@@ -6,6 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:background="#FFF6F6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,20 +30,21 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/clasico"
+            android:id="@+id/tenmon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="13dp"
             android:layout_toRightOf="@id/img"
             android:fontFamily="@font/gilroy_medium"
             android:text="Clasico"
-            android:textSize="23dp" />
+            android:textSize="17dp" />
 
         <TextView
-            android:id="@id/tenmongh"
-            android:layout_width="wrap_content"
+            android:id="@id/mota"
+
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/clasico"
+            android:layout_below="@+id/tenmon"
             android:layout_toRightOf="@id/img"
             android:fontFamily="@font/gilroy_medium"
             android:text="Mixed Piiza" />
@@ -49,26 +52,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tenmongh"
+            android:layout_below="@+id/mota"
             android:layout_toRightOf="@id/img"
-            android:id="@+id/giatiengh"
+            android:id="@+id/giatien"
             android:fontFamily="@font/gilroy_medium"
             android:text="$7.90"
             android:textSize="23dp" />
+        <TextView
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/giatien"
+            android:id="@+id/size"
+            android:text="Size: M"
+            android:layout_marginLeft="20dp"
+            android:textSize="16dp"
+            android:layout_below="@+id/mota"
+            android:fontFamily="@font/gilroy_medium"/>
     </RelativeLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="117dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="18dp"
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ct"
+        android:layout_width="117dp"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="-20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/soluong"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
 
             android:background="@drawable/custom_pickkernumber"
             android:gravity="center"
@@ -80,7 +98,7 @@
             android:id="@+id/cong"
             android:layout_width="35dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+
             android:layout_marginEnd="32dp"
             android:background="@drawable/custom_numberpicker1"
             android:gravity="center"
@@ -93,7 +111,7 @@
             android:id="@+id/tru"
             android:layout_width="35dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="5dp"
             android:background="@drawable/custom_numberpicker1"
