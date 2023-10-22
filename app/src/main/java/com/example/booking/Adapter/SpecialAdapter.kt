@@ -21,9 +21,10 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
         var calo = itemView.findViewById<TextView>(com.example.booking.R.id.calo)
         var img = itemView.findViewById<ImageView>(com.example.booking.R.id.imgmonan)
         var tt = itemView.findViewById<ImageView>(com.example.booking.R.id.tt)
-        var tenmon = itemView.findViewById<TextView>(com.example.booking.R.id.tenmon)
+        var tenmon = itemView.findViewById<TextView>(com.example.booking.R.id.tv1)
         var giatien = itemView.findViewById<TextView>(com.example.booking.R.id.gia)
         var info = itemView.findViewById<ImageView>(com.example.booking.R.id.info)
+        var mota = itemView.findViewById<TextView>(com.example.booking.R.id.tenmon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -62,13 +63,15 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
         holder.tenmon.text = current.name
         holder.giatien.text ="$${current.price.toString()}"
         Picasso.get().load(current.image_url).into(holder.img)
+        holder.mota.text = current.description
 
         holder.info.setOnClickListener {
             val bundle = Bundle()
-            bundle.putString("calo", current.calories.toString())
+            bundle.putInt("calo", current.calories.toString().toIntOrNull()!!)
             bundle.putString("tenmon",current.name)
-            bundle.putString("giatien", current.price.toString())
+            bundle.putInt("giatien", current.price.toString().toIntOrNull()!!)
             bundle.putString("img", current.image_url)
+            bundle.putString("mota", current.description)
 
             val foodDetail = FoodDetail()
             foodDetail.arguments = bundle

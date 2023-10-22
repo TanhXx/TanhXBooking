@@ -2,7 +2,7 @@ package com.example.booking.Model
 
 import androidx.lifecycle.ViewModel
 
-class CartViewModel : ViewModel() {
+open class CartViewModel : ViewModel() {
     val cartItems: MutableList<Giohang> = mutableListOf()
 
     fun addCartItem(item: Giohang) {
@@ -18,5 +18,15 @@ class CartViewModel : ViewModel() {
                 iterator.remove()
             }
         }
+    }
+
+    fun update (tenmon: String, soluongmoi : Int, tongtienmoi : Int){
+        val item =  cartItems.find { it.tenmon == tenmon }
+        item?.soluong = soluongmoi
+        item?.tongtien = tongtienmoi
+    }
+    fun updatett (tenmon: String, tongtienmoi : Int){
+        val item =  cartItems.find { it.tenmon == tenmon }
+        item?.tongtien = tongtienmoi
     }
 }

@@ -3,111 +3,139 @@ package com.example.booking
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import com.example.booking.Adapter.SpecialAdapter
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.booking.Model.CartViewModel
+import com.example.booking.Model.Giohang
 import com.example.booking.databinding.FragmentFoodDetailBinding
 import com.squareup.picasso.Picasso
-
+import java.lang.Boolean
+import kotlin.String
+import kotlin.arrayOf
 
 class FoodDetail : Fragment() {
-   var Size : String? = null
+    var TAG = "detail"
+    var tongtienmon = 0
+    var Size: String? = null
     var count = 1
-    var img : String? =null
-    var thanhtien = 0
-   lateinit var binding : FragmentFoodDetailBinding
+    var img: String? = null
+    var tongtienpt = 0
+    var giatien = 0
+    var calo = 0
+    var soluong =1
+    var mota : String? = null
+    var tenmon: String? = null
+    lateinit var binding: FragmentFoodDetailBinding
+    private lateinit var cartViewModel: CartViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        cartViewModel = ViewModelProvider(requireActivity()).get(CartViewModel::class.java)
+    }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFoodDetailBinding.inflate(inflater,container,false)
+        binding = FragmentFoodDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         Showdata()
         Changecolorsize()
-        binding.cong.setOnClickListener {
-            count++
-            binding.soluong.text = count.toString()
-        }
-        binding.tru.setOnClickListener {
-            count --
-            if (count<0){
-                count = 0
-                binding.soluong.text = count.toString()
-
-            }else{
-                binding.soluong.text = count.toString()
-            }
-        }
-
-        binding.back.setOnClickListener {
-            parentFragmentManager.beginTransaction().replace(R.id.maincontainer,Homef()).commit()
-        }
+        TT()
 
         binding.giohang.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("soluong", binding.soluong.text.toString())
-            bundle.putString("size", Size)
-            bundle.putString("tenmon", binding.tenmon.text.toString())
-            bundle.putString("gia", binding.gia.text.toString())
-            bundle.putString("img", img)
-
-            val cartFragment = Cart()
-            cartFragment.arguments = bundle
-
+            Log.d(TAG, "${tongtienmon}-${Size}-${giatien}-${tenmon}-${mota}-${img}- ${soluong}")
+            val item = Giohang(tongtienpt,"${Size}",giatien, "${tenmon}", "${mota}", soluong, "${img}")
+           cartViewModel.addCartItem(item)
             parentFragmentManager.beginTransaction()
-                .replace(R.id.maincontainer, cartFragment,"CartFragmentTag")
+                .replace(R.id.maincontainer, Cart(), "CartFragmentTag")
+                .addToBackStack(null)
                 .commit()
-
         }
-
-
-
 
     }
 
-    private fun Changecolorsize() {
-        val buttonList = listOf(binding.sizel,binding.sizes,binding.sizem)
-        var selectedbutton : Button? = null
-
-        buttonList.forEach { button ->
-            button.setOnClickListener {
-                selectedbutton?.setBackgroundColor(Color.parseColor("#EDE5E5"))
-
-                button.setBackgroundColor(Color.parseColor("#B0E3EA"))
-                selectedbutton = button
-
-
-
+    private fun TT() {
+        binding.cong.setOnClickListener {
+            count++
+            binding.soluong.text = count.toString()
+            soluong = count.toString().toIntOrNull()!!
+            Log.d("detail", "onViewCreated:${binding.soluong.text.toString()} ")
+            updateTongTienPT()
+            tongtienmon = tongtienpt
+            Log.d(TAG, "TT: ${tongtienpt}")
+        }
+        binding.tru.setOnClickListener {
+            count--
+            if (count < 0) {
+                count = 0
+                binding.soluong.text = count.toString()
+            } else {
+                binding.soluong.text = count.toString()
+                Log.d("detail", "onViewCreated:${binding.soluong.text.toString()} ")
+                updateTongTienPT()
+                updateTongTienPT()
+                tongtienmon = tongtienpt
+                Log.d(TAG, "TT: ${tongtienpt}")
             }
+            binding.back.setOnClickListener {
+                parentFragmentManager.beginTransaction().replace(R.id.maincontainer, Homef()).commit()
+            }
+        }
+    }
+
+    private fun Changecolorsize() {
+        val buttonList = arrayOf(
+            binding.sizel, binding.sizes, binding.sizem
+        )
+        var selectedButton: Button? = null
+        for (button in buttonList) {
+            button.setOnClickListener {
+                if (selectedButton != null) {
+                    selectedButton!!.setBackgroundColor(Color.parseColor("#EDE5E5"))
+                }
+                button.setBackgroundColor(Color.parseColor("#B0E3EA"))
+                selectedButton = button
+                Size = button.text.toString()
+                Log.d("detail", "Changecolorsize: $Size")
+                updateTongTienPT()
+                tongtienmon = tongtienpt
+            }
+        }
+    }
+
+    private fun updateTongTienPT() {
+        tongtienpt = if (Size == "S") {
+            giatien * binding.soluong.text.toString().toInt()
+        } else if (Size == "M") {
+            val priceForM = giatien * binding.soluong.text.toString().toInt()
+            priceForM + priceForM * 10 / 100
+        } else {
+            giatien * binding.soluong.text.toString()
+                .toInt() + giatien * binding.soluong.text.toString().toInt() * 20 / 100
         }
     }
 
     private fun Showdata() {
-        var giatien = arguments?.getString("giatien")
-        var tenmon = arguments?.getString("tenmon")
-        var calo = arguments?.getString("calo")
-        var tym = arguments?.getString("tym").toBoolean()
-        img = arguments?.getString("img")
-
-        binding.tenmon.text = tenmon
-        binding.calo.text = "${calo} Calories"
-        binding.gia.text = "$${giatien}"
-        if (tym){
-            binding.tym.setImageResource(R.drawable.loved)
-        }else{
-            binding.tym.setImageResource(R.drawable.love)
-        }
+        giatien = requireArguments().getInt("giatien")
+        tenmon = requireArguments().getString("tenmon")
+        calo = requireArguments().getInt("calo")
+        val tym = Boolean.parseBoolean(requireArguments().getString("tym"))
+        img = requireArguments().getString("img")
+        mota = requireArguments().getString("mota")
+        binding.clas.text = tenmon
+        binding.calo.text = "$calo Calories"
+        binding.gia.text = "$giatien$"
+        binding.tenmon.text = mota
         Picasso.get().load(img).into(binding.imgmonan)
     }
-
-
 }

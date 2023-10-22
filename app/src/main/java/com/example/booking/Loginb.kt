@@ -2,6 +2,7 @@ package com.example.booking
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.InputFilter
@@ -52,31 +53,32 @@ class Loginb : BottomSheetDialogFragment() {
     private fun callapi() {
           val user = TkMK( binding.mk.text.toString(),binding.tk.text.toString())
           Apiall.apiall.Login(user).enqueue(object : Callback<Loginnew>{
+              @SuppressLint("SuspiciousIndentation")
               override fun onResponse(call: Call<Loginnew>, response: Response<Loginnew>) {
                   if (response.isSuccessful){
                     val login = response.body()
-                       token = login!!.data.token
-                      if(response.code() == 200){
+                      Log.d(TAG, "onResponse: ${login!!.status}")
+                      if(login!!.status){
+                          token = login!!.data.token
                           parentFragmentManager.beginTransaction().replace(R.id.maincontainer, Homef(),"f1").commit()
                           dismiss()
-                      }
-                  }else {
-                      binding.edtMk.error = "Tài khoản hoặc mật khẩu không chính xác"
-                      val redColor = ContextCompat.getColor(requireContext(), R.color.red)
-                      binding.edtMk.setEndIconDrawable(R.drawable.eyered)
-                      binding.mk.setBackgroundResource(R.drawable.custom_checkmkfailse)
-                      binding.mk.setTextColor(redColor)
-                      binding.edtMk.endIconDrawable!!.setColorFilter(redColor, PorterDuff.Mode.SRC_IN)
-                      binding.mk.setOnClickListener {
-                          binding.tk.requestFocus()
-                          ErroText()
-                      }
-                      binding.tk.setOnClickListener {
-                          binding.tk.requestFocus()
-                          ErroText()
+                      }else{
+                          binding.edtMk.error = "Tài khoản hoặc mật khẩu không chính xác"
+                          val redColor = ContextCompat.getColor(requireContext(), R.color.red)
+                          binding.edtMk.setEndIconDrawable(R.drawable.eyered)
+                          binding.mk.setBackgroundResource(R.drawable.custom_checkmkfailse)
+                          binding.mk.setTextColor(redColor)
+                          binding.edtMk.endIconDrawable!!.setColorFilter(redColor, PorterDuff.Mode.SRC_IN)
+                          binding.mk.setOnClickListener {
+                              binding.tk.requestFocus()
+                              ErroText()
+                          }
+                          binding.tk.setOnClickListener {
+                              binding.tk.requestFocus()
+                              ErroText()
+                          }
                       }
                   }
-
 
               }
               override fun onFailure(call: Call<Loginnew>, t: Throwable) {

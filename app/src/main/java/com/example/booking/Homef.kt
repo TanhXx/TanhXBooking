@@ -10,13 +10,15 @@ import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation
 import com.example.booking.Adapter.ViewpagerAdapter
+import com.example.booking.Model.CartViewModel
 import com.example.booking.databinding.FragmentHomefBinding
 
 
 class Homef : Fragment() {
     lateinit var binding : FragmentHomefBinding
     var TAG = "huhu"
-    var checkappbar = true
+    var tongtien = 0
+  /*   var cartViewModel: CartViewModel? = null*/
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +41,18 @@ class Homef : Fragment() {
         binding.menuBack.setOnClickListener {
             Toast.makeText(requireContext(), "OK", Toast.LENGTH_SHORT).show()
         }
+        binding.gh.setOnClickListener {
+            /*if(cartViewModel.cartItems != null){
+                for (item in cartViewModel.cartItems){
+                    tongtien += item.thanhtien
+                }
+                var bundle = Bundle()
+                bundle.putInt("thanhtoan", tongtien)
+                Cart().arguments = bundle
+            }*/
+
+            parentFragmentManager.beginTransaction().replace(R.id.maincontainer,Cart()).addToBackStack(null).commit()
+        }
 
         var thanhtien = arguments?.getString("thanhtien")
         Log.d("thanhtien", "onViewCreated: ${thanhtien} ")
@@ -53,25 +67,30 @@ class Homef : Fragment() {
                 super.onPageSelected(position)
                 when(position){
                     0 -> {
+                        binding.gh.visibility = View.GONE
                         binding.navis.show(1)
                         checkappbar()
                     }
                     1 -> {
                         binding.navis.show(2)
                         checkappbar()
+                        binding.gh.visibility = View.VISIBLE
                     }
                     2 -> {
                         binding.navis.show(3)
                         checkappbar()
+                        binding.gh.visibility = View.VISIBLE
                     }
                     3 ->{
                         binding.navis.show(4)
                         checkappbar()
+                        binding.gh.visibility = View.VISIBLE
                     }
                     4 -> {
                         binding.navis.show(5)
                         binding.appbar.visibility = View.GONE
                         binding.tv1.visibility = View.GONE
+                        binding.gh.visibility = View.GONE
                     }
                 }
             }

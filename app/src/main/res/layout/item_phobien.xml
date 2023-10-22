@@ -64,8 +64,6 @@
         <TextView
             android:id="@+id/tenmon"
             android:layout_alignParentLeft="true"
-
-            android:layout_marginTop="5dp"
             android:fontFamily="@font/gilroy_medium"
             android:layout_width="180dp"
             android:layout_marginLeft="20dp"
