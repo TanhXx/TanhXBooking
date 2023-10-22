@@ -16,10 +16,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.booking.Adapter.SaleOff
-import com.example.booking.Api.apiGiamGia
-import com.example.booking.Model.FakeData
-import com.example.booking.Model.Listitem
+import com.example.booking.Adapter.getAllAdapter
+import com.example.booking.Api.Apiall
+import com.example.booking.Model.Listproduct
+import com.example.booking.Model.Singleton
+import com.example.booking.Model.getAll
 import com.example.booking.databinding.FragmentCampaignsfBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -29,11 +30,12 @@ import retrofit2.Response
 import java.util.Locale
 
 class Campaignsf : Fragment() {
-    var ds : ArrayList<FakeData> = ArrayList()
+    var ds : ArrayList<getAll> = ArrayList()
 
     var TAG = "huhu"
     var lastY = 0f
     var checknavi = true
+
     private lateinit var binding : FragmentCampaignsfBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationPermissionCode = 123
@@ -48,19 +50,20 @@ class Campaignsf : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        binding.rcv.adapter = SaleOff(requireContext(),ds)
+        binding.rcv.adapter = getAllAdapter(requireContext(),ds)
         binding.rcv.layoutManager = LinearLayoutManager(requireContext())
-        callApi()
+        var beartoken = "Bearer ${Loginb.token}"
+        getall(beartoken)
 
           binding.rcv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val currentY = recyclerView.computeVerticalScrollOffset().toFloat()
-                Log.d(TAG, "onScrolled: ${currentY}-")
+                Log.d(TAG, "onScrolled: ${currentY}-${lastY}")
                 val delta = currentY - lastY
                 val frag1 = requireActivity().supportFragmentManager.findFragmentByTag("f1") as Homef
                 if (delta > 0 && checknavi) {
-                 /*   binding.navis.animate().translationY(binding.navis.height.toFloat())*/
+
                     frag1.showhidenavi(checknavi)
                     checknavi = false
                 } else if (delta < 0 && !checknavi) {
@@ -84,29 +87,26 @@ class Campaignsf : Fragment() {
 
     }
 
-    private fun callApi() {
-        apiGiamGia.api.getData("desc", "activity", "Android", "stackoverflow")
-            .enqueue(object : Callback<Listitem> {
-                override fun onResponse(call: Call<Listitem>, response: Response<Listitem>) {
-                    Log.d("checkrq", "onResponse: ")
-                    if(response.isSuccessful){
-                        binding.progress.visibility = View.GONE
-                        val mlist = response.body()
-                        val items = mlist!!.items
-                        Log.d(TAG, "onResponse: ${items}")
-                      /*  SingletonData.addItems(items!!.map { Listitem(it) })*/
-                        SingletonData.addItems(items!!)
-                        for (item in items!!){
-                            ds.add(item)
-                            binding.rcv.adapter!!.notifyDataSetChanged()
-                        }
+    private fun getall(beartoken : String){
+        Apiall.apiall.getProducts(beartoken).enqueue(object : Callback<Listproduct>{
+            @SuppressLint("SuspiciousIndentation")
+            override fun onResponse(call: Call<Listproduct>, response: Response<Listproduct>) {
+                if(response.isSuccessful){
+                   var mlist = response.body()
+                    var list = mlist!!.data.products
+                        Singleton.addItems(list)
+                    for (item in list!!){
+                        ds.add(item)
+                        binding.rcv.adapter!!.notifyDataSetChanged()
                     }
-                }
 
-                override fun onFailure(call: Call<Listitem>, t: Throwable) {
-                    Log.d("checkrq", "onFailure: ")
                 }
-            })
+            }
+
+            override fun onFailure(call: Call<Listproduct>, t: Throwable) {
+                Log.d("getall", "onFailure: ")
+            }
+        })
     }
 
     private fun isLocationPermissionGranted(): Boolean {

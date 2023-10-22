@@ -61,6 +61,8 @@ dependencies {
 
 
     implementation ("pub.devrel:easypermissions:3.0.0")
+    implementation ("com.squareup.okhttp3:okhttp:3.14.0")
+    implementation ("com.squareup.okhttp3:logging-interceptor:3.14.0")
 
 
 

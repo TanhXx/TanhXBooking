@@ -50,7 +50,6 @@
                 android:layout_height="wrap_content">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_marginTop="10dp"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
                     android:layout_width="match_parent"
                     android:background="@drawable/custom_edtlog"
                     android:fontFamily="@font/gilroy_medium"

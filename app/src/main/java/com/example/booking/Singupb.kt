@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.booking.Api.ApiRegis
-import com.example.booking.Api.Apilogin
+import com.example.booking.Api.Apiall
 import com.example.booking.Model.Register
-import com.example.booking.Model.RegisterX
+import com.example.booking.Model.Registernew
 import com.example.booking.databinding.BsingupBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import retrofit2.Call
@@ -46,8 +45,8 @@ class Singupb : BottomSheetDialogFragment() {
             var mk = binding.mk.text.toString()
 
             var regis = Register(email, mk, sdt, tk)
-            Apilogin.apilogin.Register(regis).enqueue(object : Callback<RegisterX> {
-                override fun onResponse(call: Call<RegisterX>, response: Response<RegisterX>) {
+            Apiall.apiall.Register(regis).enqueue(object : Callback<Registernew> {
+                override fun onResponse(call: Call<Registernew>, response: Response<Registernew>) {
                     if (response.isSuccessful){
                         Toast.makeText(requireContext(), "Đăng kí thành công", Toast.LENGTH_SHORT).show()
                         dismiss()
@@ -58,13 +57,11 @@ class Singupb : BottomSheetDialogFragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<RegisterX>, t: Throwable) {
+                override fun onFailure(call: Call<Registernew>, t: Throwable) {
                     Toast.makeText(requireContext(), "Đã xảy ra lỗi", Toast.LENGTH_SHORT).show()
                 }
             })
         }
-
-
 
     }
 

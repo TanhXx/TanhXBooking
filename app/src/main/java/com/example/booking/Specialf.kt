@@ -9,12 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booking.Adapter.SpecialAdapter
-import com.example.booking.Model.FakeData
+import com.example.booking.Model.Singleton
+import com.example.booking.Model.getAll
 import com.example.booking.databinding.FragmentSpecialBinding
 
 
 class Specialf : Fragment() {
-    var ds : ArrayList<FakeData> = ArrayList()
+    var ds : ArrayList<getAll> = ArrayList()
     private lateinit var binding : FragmentSpecialBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,16 +31,15 @@ class Specialf : Fragment() {
 
         binding.rcvspecial.adapter = SpecialAdapter(requireContext(),ds)
         binding.rcvspecial.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-
        Data()
         binding.vitri.text = Campaignsf.address
 
     }
 
     private fun Data() {
-        val items = SingletonData.getItems()
+        val items = Singleton.getItems()
 
-        Log.d("haha", "onViewCreated: ${items}")
+        Log.d("get", "onViewCreated: ${items}")
 
         for (item in items){
             ds.add(item)

@@ -14,7 +14,6 @@ class Splash : AppCompatActivity() {
         setContentView(binding.root)
         object : CountDownTimer(1000, 1000) {
             override fun onTick(p0: Long) {
-
             }
 
             override fun onFinish() {

@@ -10,20 +10,21 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booking.FoodDetail
-import com.example.booking.Model.FakeData
+import com.example.booking.Model.getAll
 import com.example.booking.R
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
-class SpecialAdapter(var mcontext : Context, var ds: ArrayList<FakeData>) :
+class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
     RecyclerView.Adapter<SpecialAdapter.viewHolder>() {
     inner class viewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var calo = itemView.findViewById<TextView>(com.example.booking.R.id.calo)
         var img = itemView.findViewById<ImageView>(com.example.booking.R.id.imgmonan)
         var tt = itemView.findViewById<ImageView>(com.example.booking.R.id.tt)
-        var tenmon = itemView.findViewById<TextView>(com.example.booking.R.id.tenmon)
+        var tenmon = itemView.findViewById<TextView>(com.example.booking.R.id.tv1)
         var giatien = itemView.findViewById<TextView>(com.example.booking.R.id.gia)
         var info = itemView.findViewById<ImageView>(com.example.booking.R.id.info)
+        var mota = itemView.findViewById<TextView>(com.example.booking.R.id.tenmon)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -40,7 +41,7 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<FakeData>) :
         var current = ds[position]
 
 
-
+/*
         var check : Boolean = current.is_answered
         if(check){
             holder.tt.setImageResource(R.drawable.loved)
@@ -56,20 +57,21 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<FakeData>) :
             else{
                 holder.tt.setImageResource(R.drawable.love)
             }
-        }
-        holder.calo.text = "${current.owner.reputation.toString()} Calories"
-        holder.tenmon.text = current.owner.user_id.toString()
-        holder.giatien.text ="$${current.owner.reputation.toString()}"
-        Picasso.get().load(current.owner.profile_image).into(holder.img)
+        }*/
+
+        holder.calo.text = "${current.calories} Calories"
+        holder.tenmon.text = current.name
+        holder.giatien.text ="$${current.price.toString()}"
+        Picasso.get().load(current.image_url).into(holder.img)
+        holder.mota.text = current.description
 
         holder.info.setOnClickListener {
             val bundle = Bundle()
-            bundle.putString("calo",current.owner.reputation.toString())
-            bundle.putString("tenmon",current.owner.user_id.toString())
-            bundle.putString("giatien", current.owner.reputation.toString())
-            bundle.putString("tym", current.is_answered.toString())
-            bundle.putString("img", current.owner.profile_image)
-
+            bundle.putInt("calo", current.calories.toString().toIntOrNull()!!)
+            bundle.putString("tenmon",current.name)
+            bundle.putInt("giatien", current.price.toString().toIntOrNull()!!)
+            bundle.putString("img", current.image_url)
+            bundle.putString("mota", current.description)
 
             val foodDetail = FoodDetail()
             foodDetail.arguments = bundle
