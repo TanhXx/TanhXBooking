@@ -32,6 +32,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="end"
+                android:id="@+id/search"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="40dp"
                 android:src="@drawable/find"
@@ -67,7 +68,7 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager2"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 app:layout_constraintBottom_toTopOf="@+id/navis"
                 tools:ignore="NotSibling" />
 

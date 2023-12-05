@@ -90,8 +90,7 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerInside"
                     android:src="@drawable/logo" />
-
-
+                
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="117dp"

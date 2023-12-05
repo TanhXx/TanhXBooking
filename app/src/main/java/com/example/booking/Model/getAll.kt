@@ -10,7 +10,8 @@ data class getAll(
     val name: String,
     val price: Int,
     val size: String,
-    val updated_at: Any
+    val updated_at: Any,
+    var check: Boolean = false
 )
 
 data class DataX(
@@ -20,3 +21,5 @@ data class DataX(
 class Listproduct(
     val data: DataX
 )
+
+

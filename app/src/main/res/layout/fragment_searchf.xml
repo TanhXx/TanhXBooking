@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-
-    tools:context=".Searchf">
+    tools:context=".Love">
 
    <TextView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tv"
        android:textSize="30dp"
        android:fontFamily="@font/gilroy_medium"
        android:layout_marginLeft="40dp"
-       android:text="Tìm Kiếm" />
+       android:text="Danh sách yêu thích " />
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_below="@+id/tv"
+       android:layout_height="match_parent"
+      android:id="@+id/rcvlove"/>
+   <LinearLayout
+       android:id="@+id/pro"
+       android:layout_centerInParent="true"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+      android:orientation="horizontal">
+      <ProgressBar
+          android:layout_gravity="center"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/progress"
+          android:layout_centerInParent="true"/>
+      <TextView
+          android:layout_gravity="center"
+          android:layout_width="wrap_content"
+         android:fontFamily="@font/gilroy_medium"
+          android:layout_height="wrap_content"
+         android:textSize="20dp"
+         android:text="Chưa có danh mục yêu thích"
+         android:textColor="@color/black"/>
+   </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

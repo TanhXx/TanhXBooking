@@ -40,7 +40,6 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         var current = ds[position]
 
-
 /*
         var check : Boolean = current.is_answered
         if(check){
@@ -77,7 +76,10 @@ class SpecialAdapter(var mcontext : Context, var ds: ArrayList<getAll>) :
             foodDetail.arguments = bundle
             (mcontext as AppCompatActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.maincontainer,foodDetail).addToBackStack(null).commit()
+
         }
+
+
 
 
 

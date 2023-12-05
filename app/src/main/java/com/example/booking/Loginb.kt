@@ -13,10 +13,18 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
 import com.example.booking.Api.Apiall
+import com.example.booking.Model.Listproduct
 import com.example.booking.Model.Loginnew
+import com.example.booking.Model.Singleton
 import com.example.booking.Model.TkMK
 import com.example.booking.databinding.BloginBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,7 +57,26 @@ class Loginb : BottomSheetDialogFragment() {
 
         }
     }
+    private fun getall(beartoken : String){
+        Apiall.apiall.getProducts(beartoken).enqueue(object : Callback<Listproduct> {
+            @SuppressLint("SuspiciousIndentation")
+            override fun onResponse(call: Call<Listproduct>, response: Response<Listproduct>) {
+                if(response.isSuccessful){
+                    var mlist = response.body()
+                    var list = mlist!!.data.products
+                    Singleton.addItems(list)
+                    parentFragmentManager.beginTransaction().replace(R.id.maincontainer, Homef(), "f1").commit()
+                    dismiss()
+                    Log.d("login", "onResponse: ${Singleton.ds.size} ")
+                }
 
+            }
+
+            override fun onFailure(call: Call<Listproduct>, t: Throwable) {
+                Log.d("getall", "onFailure: ")
+            }
+        })
+    }
     private fun callapi() {
           val user = TkMK( binding.mk.text.toString(),binding.tk.text.toString())
           Apiall.apiall.Login(user).enqueue(object : Callback<Loginnew>{
@@ -60,8 +87,8 @@ class Loginb : BottomSheetDialogFragment() {
                       Log.d(TAG, "onResponse: ${login!!.status}")
                       if(login!!.status){
                           token = login!!.data.token
-                          parentFragmentManager.beginTransaction().replace(R.id.maincontainer, Homef(),"f1").commit()
-                          dismiss()
+                          var beartoken = "Bearer ${token}"
+                          getall(beartoken)
                       }else{
                           binding.edtMk.error = "Tài khoản hoặc mật khẩu không chính xác"
                           val redColor = ContextCompat.getColor(requireContext(), R.color.red)

@@ -12,12 +12,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booking.Adapter.getAllAdapter
 import com.example.booking.Api.Apiall
+import com.example.booking.Model.CartViewModel
+import com.example.booking.Model.ListLove
 import com.example.booking.Model.Listproduct
 import com.example.booking.Model.Singleton
 import com.example.booking.Model.getAll
@@ -31,14 +35,19 @@ import java.util.Locale
 
 class Campaignsf : Fragment() {
     var ds : ArrayList<getAll> = ArrayList()
-
+    lateinit var listLove: ListLove
     var TAG = "huhu"
     var lastY = 0f
     var checknavi = true
+    var vitrikhach = Location("vtkhach")
+    var vitriquan = Location("vtquan")
 
     private lateinit var binding : FragmentCampaignsfBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val locationPermissionCode = 123
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,13 +58,17 @@ class Campaignsf : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
-
-        binding.rcv.adapter = getAllAdapter(requireContext(),ds)
         binding.rcv.layoutManager = LinearLayoutManager(requireContext())
-        var beartoken = "Bearer ${Loginb.token}"
-        getall(beartoken)
-
-          binding.rcv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+        var adapter = getAllAdapter(requireContext(),ds)
+        adapter.setClickable(true)
+        binding.rcv.adapter = adapter
+        Log.d("CampaiSize", "onViewCreated: ${Singleton.getItems()}")
+        for (item in Singleton.getItems()){
+            ds.add(item)
+            ds.contains(item)
+        }
+        binding.rcv.adapter?.notifyDataSetChanged()
+        binding.rcv.addOnScrollListener(object : RecyclerView.OnScrollListener(){
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 val currentY = recyclerView.computeVerticalScrollOffset().toFloat()
@@ -63,18 +76,15 @@ class Campaignsf : Fragment() {
                 val delta = currentY - lastY
                 val frag1 = requireActivity().supportFragmentManager.findFragmentByTag("f1") as Homef
                 if (delta > 0 && checknavi) {
-
                     frag1.showhidenavi(checknavi)
                     checknavi = false
                 } else if (delta < 0 && !checknavi) {
-                   /* binding.navis.animate().translationY(0f)*/
                     frag1.showhidenavi(checknavi)
                     checknavi = true
                 }
                 lastY = currentY
             }
         })
-
         // Kiểm tra quyền truy cập vị trí
         if (isLocationPermissionGranted()) {
             // Quyền đã được cấp hoặc đã được yêu cầu
@@ -83,32 +93,12 @@ class Campaignsf : Fragment() {
             // Yêu cầu quyền truy cập vị trí
             requestLocationPermission()
         }
+        vitriquan.latitude = 21.0327628
+        vitriquan.longitude = 105.8552818
+
 
 
     }
-
-    private fun getall(beartoken : String){
-        Apiall.apiall.getProducts(beartoken).enqueue(object : Callback<Listproduct>{
-            @SuppressLint("SuspiciousIndentation")
-            override fun onResponse(call: Call<Listproduct>, response: Response<Listproduct>) {
-                if(response.isSuccessful){
-                   var mlist = response.body()
-                    var list = mlist!!.data.products
-                        Singleton.addItems(list)
-                    for (item in list!!){
-                        ds.add(item)
-                        binding.rcv.adapter!!.notifyDataSetChanged()
-                    }
-
-                }
-            }
-
-            override fun onFailure(call: Call<Listproduct>, t: Throwable) {
-                Log.d("getall", "onFailure: ")
-            }
-        })
-    }
-
     private fun isLocationPermissionGranted(): Boolean {
         return ContextCompat.checkSelfPermission(
             requireContext(),
@@ -125,7 +115,10 @@ class Campaignsf : Fragment() {
                     // Xử lý dữ liệu vị trí ở đây
                     val latitude = location.latitude
                     val longitude = location.longitude
-                    // ...
+                    vitrikhach.latitude = latitude
+                    vitriquan.longitude = longitude
+                    kcach = vitrikhach.distanceTo(vitriquan) / 1000000
+                    Log.d("khoangcach", "getLastKnownLocation: ${kcach!!/1000000} km")
                     Log.d("huhu", "${latitude} - ${longitude} ")
                     address = getAddressFromLocation(requireContext(), latitude, longitude)
 
@@ -157,6 +150,7 @@ class Campaignsf : Fragment() {
 
     companion object{
         var address : String = ""
+        var kcach : Float? = null
     }
 
 }

@@ -16,7 +16,7 @@ import retrofit2.http.POST
 interface Apiall {
     companion object{
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://ec2-13-231-122-229.ap-northeast-1.compute.amazonaws.com/api/")
+            .baseUrl("http://ec2-57-180-22-166.ap-northeast-1.compute.amazonaws.com/api/")
             .addConverterFactory(GsonConverterFactory.create()).build()
 
         var apiall = retrofit.create(Apiall::class.java)

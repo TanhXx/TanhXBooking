@@ -5,7 +5,10 @@
         <!--<item name="colorPrimary">#2196F3</item>
         <item name="android:colorPrimaryDark">@color/red</item>
         <item name="android:colorAccent">@color/red</item>-->
+        <item name="colorPrimary">#F44336</item>
+
     </style>
 
     <style name="Theme.Booking" parent="Base.Theme.Booking" />
+
 </resources>

@@ -7,7 +7,7 @@ import com.example.booking.Homef
 import com.example.booking.Campaignsf
 import com.example.booking.Myprofilef
 import com.example.booking.Notificationf
-import com.example.booking.Searchf
+import com.example.booking.Love
 
 class ViewpagerAdapter(fragment : Homef) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
@@ -22,7 +22,7 @@ class ViewpagerAdapter(fragment : Homef) : FragmentStateAdapter(fragment) {
         }else if (position == 2){
             Campaignsf()
         }else if (position == 3){
-            Searchf()
+            Love()
         }else
             Myprofilef()
         }

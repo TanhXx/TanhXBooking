@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.booking.Model.CartViewModel
 import com.example.booking.Model.Giohang
+import com.example.booking.Model.Singleton
 import com.example.booking.databinding.FragmentFoodDetailBinding
 import com.squareup.picasso.Picasso
 import java.lang.Boolean
@@ -46,6 +48,7 @@ class FoodDetail : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        Log.d(TAG, "onViewCreated: ${Singleton.getItems()}")
         super.onViewCreated(view, savedInstanceState)
 
         Showdata()
@@ -53,13 +56,17 @@ class FoodDetail : Fragment() {
         TT()
 
         binding.giohang.setOnClickListener {
-            Log.d(TAG, "${tongtienmon}-${Size}-${giatien}-${tenmon}-${mota}-${img}- ${soluong}")
-            val item = Giohang(tongtienpt,"${Size}",giatien, "${tenmon}", "${mota}", soluong, "${img}")
-           cartViewModel.addCartItem(item)
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.maincontainer, Cart(), "CartFragmentTag")
-                .addToBackStack(null)
-                .commit()
+            if(Size == null){
+                Toast.makeText(requireContext(), "Vui lòng chọn kích thước Pizza", Toast.LENGTH_SHORT).show()
+            }else {
+                Log.d(TAG, "${tongtienmon}-${Size}-${giatien}-${tenmon}-${mota}-${img}- ${soluong}")
+                val item = Giohang(tongtienpt,"Size: ${Size}",giatien, "${tenmon}", "${mota}", soluong, "${img}")
+                cartViewModel.addCartItem(item)
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.maincontainer, Cart(), "CartFragmentTag")
+                    .addToBackStack(null)
+                    .commit()
+            }
         }
 
     }
@@ -129,7 +136,6 @@ class FoodDetail : Fragment() {
         giatien = requireArguments().getInt("giatien")
         tenmon = requireArguments().getString("tenmon")
         calo = requireArguments().getInt("calo")
-        val tym = Boolean.parseBoolean(requireArguments().getString("tym"))
         img = requireArguments().getString("img")
         mota = requireArguments().getString("mota")
         binding.clas.text = tenmon

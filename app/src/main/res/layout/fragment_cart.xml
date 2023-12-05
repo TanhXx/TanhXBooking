@@ -79,17 +79,120 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_medium"
-            android:text="Tổng cộng"
-
-            android:textSize="23dp"/>
+            android:text="Tổng tạm tính"
+            android:textColor="@color/black"
+            android:id="@+id/ttt"
+            android:textSize="15dp"/>
         <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Khoảng cách"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:id="@+id/km"
+            android:layout_below="@+id/ttt"
+            android:fontFamily="@font/gilroy_medium"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phí áp dụng"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:id="@+id/pad"
+            android:layout_below="@+id/km"
+            android:fontFamily="@font/gilroy_medium"/>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5km"
+            android:textSize="15sp"
+            android:id="@+id/skm"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tongtien"
+            android:fontFamily="@font/gilroy_medium"/>
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="20.000"
+            android:textSize="15sp"
+            android:id="@+id/kc"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/skm"
+            android:fontFamily="@font/gilroy_medium"/>
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Khoản đóng góp trung hòa các-bon 1$"
+            android:layout_below="@+id/pad"
+            android:textSize="15dp"/>
+        <TextView
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="23dp"
+            android:textSize="15dp"
             android:id="@+id/tongtien"
             android:layout_alignParentRight="true"
             android:text="86$"/>
+        <Switch
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/kc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phidonggop"
+            android:checked="true"
+            android:layout_alignParentRight="true"
+            />
+<TextView
+    android:textStyle="bold"
+    android:id="@+id/onedo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="15dp"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="10dp"
+    android:layout_below="@+id/phidonggop"
+    android:text="1$"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/onedo">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/tc"
+                android:text="Tổng cộng: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_below="@+id/onedo"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tt"
+                android:layout_toRightOf="@+id/tc"
+                android:text="100$"
+                android:layout_below="@+id/onedo"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+
 
     </RelativeLayout>
 </RelativeLayout>

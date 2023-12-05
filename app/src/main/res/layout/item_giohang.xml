@@ -33,7 +33,7 @@
             android:id="@+id/tenmon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="11dp"
             android:layout_toRightOf="@id/img"
             android:fontFamily="@font/gilroy_medium"
             android:text="Clasico"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@id/mota"
-
+            android:layout_marginTop="8dp"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tenmon"
@@ -54,18 +54,20 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/mota"
             android:layout_toRightOf="@id/img"
+            android:layout_marginTop="5dp"
             android:id="@+id/giatien"
             android:fontFamily="@font/gilroy_medium"
             android:text="$7.90"
             android:textSize="23dp" />
         <TextView
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/giatien"
             android:id="@+id/size"
+
             android:text="Size: M"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:textSize="16dp"
             android:layout_below="@+id/mota"
             android:fontFamily="@font/gilroy_medium"/>
@@ -76,7 +78,7 @@
         android:layout_width="117dp"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="-20dp"
         app:layout_constraintEnd_toEndOf="parent"
 

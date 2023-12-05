@@ -16,4 +16,12 @@
         <item name="behavior_peekHeight"> 1000dp</item>
     </style>
 
+    <style name="MyCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:colorControlNormal">@color/red</item>
+        <item name="android:colorControlActivated">@color/red</item>
+        <item name="color">@color/red</item>
+        <item name="android:buttonTint">@color/red</item>
+    </style>
+
+
 </resources>

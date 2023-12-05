@@ -1,40 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
     android:layout_height="wrap_content">
     <RelativeLayout
+        android:id="@+id/fullscreen"
+        android:background="@drawable/custom_vien"
         android:layout_width="match_parent"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-        <FrameLayout
+        <RelativeLayout
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
             android:id="@+id/frm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+           <LinearLayout
+               android:layout_centerInParent="true"
+               android:orientation="vertical"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@id/img"
+               android:layout_toLeftOf="@id/checktym">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@id/tenmon"
+                   android:text="tên món"
+                   android:textColor="@color/black"
+                   android:textStyle="bold"
+                   android:textSize="18dp"
+                   android:fontFamily="@font/gilroy_medium"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@id/mota"
+                   android:layout_marginTop="4dp"
+                   android:text="mô tả"
+                   android:textSize="15dp"
+                   android:fontFamily="@font/gilroy_medium"/>
+
+           </LinearLayout>
             <ImageView
+
                 android:scaleType="centerInside"
                 android:id="@+id/img"
-                android:background="#E2E2E2"
-                android:layout_width="match_parent"
-                android:layout_height="167dp"/>
+                android:layout_width="140dp"
+                android:layout_height="120dp"/>
+            <CheckBox
+                style="@style/MyCheckBoxStyle"
+                android:buttonTint="@color/red"
+                android:id="@+id/checktym"
+                android:button="@drawable/custom_checkbox"
+                android:scaleType="centerCrop"
+                android:layout_width="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like"/>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/checktym"
-                    android:scaleType="centerCrop"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/like"/>
+                android:layout_height="wrap_content">
+
             </RelativeLayout>
 
 
-        </FrameLayout>
+        </RelativeLayout>
         <TextView
+            android:layout_marginLeft="5dp"
             android:layout_marginBottom="10dp"
             android:id="@+id/giamgia"
             android:layout_below="@+id/frm"
@@ -43,13 +78,13 @@
             android:textSize="20dp"
             android:fontFamily="@font/gilroy_medium"
             android:text="Giảm giá 30%"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
         <TextView
             android:textStyle="bold"
             android:id="@+id/giagoc"
             android:textColor="#2F2F2F"
             android:layout_marginRight="3dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="18dp"
             android:layout_below="@+id/frm"
           android:layout_toLeftOf="@+id/giadagiam"
             android:layout_width="wrap_content"
@@ -57,6 +92,9 @@
             android:textSize="16dp"
             android:text="$7,90"/>
         <TextView
+            android:layout_marginRight="5dp"
+            android:textColor="#2F2F2F"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_height="wrap_content"
@@ -65,7 +103,7 @@
             android:id="@+id/giadagiam"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/frm"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
     </RelativeLayout>
 

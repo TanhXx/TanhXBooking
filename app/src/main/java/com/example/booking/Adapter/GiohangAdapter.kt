@@ -41,7 +41,7 @@ class GiohangAdapter(var mContext: Cart, var ds: MutableList<Giohang>, var cartv
         holder.tenmon.text = current.tenmon
         holder.mota.text = current.mota
         holder.soluong.text = current.soluong.toString()
-        holder.size.text = "Size: " +current.size
+        holder.size.text = current.size
         // Size - giá x1
         var x1 = current.tongtien/ current.soluong
         var count = current.soluong
